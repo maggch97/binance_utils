@@ -33,7 +33,7 @@ def get_all_coins(history):
 
 history = read_trade_history_from_file()
 print(get_all_coins(history))
-filtered = filter_trade_history_by_coin(history, 'IMXUSDT')
+filtered = filter_trade_history_by_coin(history, 'BNBUSDT')
 
 for item in filtered:
     # cal the  开多/开空/平多/平空  from side and positionSide
