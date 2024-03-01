@@ -34,4 +34,4 @@ def fetch_trade_history(portfolioId):
         time.sleep(1)
 
 
-fetch_trade_history("3699951837954445568")
+fetch_trade_history("3865423691884344576")
