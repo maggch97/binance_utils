@@ -1,0 +1,72 @@
+{
+    "code": "000000",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "userId": 16330192,
+        "leadOwner": false,
+        "hasCopy": false,
+        "leadPortfolioId": "3851722353025479937",
+        "nickname": "bilyonarya_na_bisdak",
+        "nicknameTranslate": "比隆纳里亚_纳_比斯达克",
+        "avatarUrl": "https://public.bnbstatic.com/image/common_notification/20211230/cbf064c9-e78f-4b13-913e-051dce1d4c16.png",
+        "status": "ACTIVE",
+        "description": "Never was anything great achieved without danger.\n\nAs you think, so shall you become",
+        "descTranslate": "从来没有任何伟大的成就是在没有危险的情况下实现的。如你所想，如此你将成为",
+        "favoriteCount": 144,
+        "currentCopyCount": 14,
+        "maxCopyCount": 200,
+        "totalCopyCount": 73,
+        "marginBalance": "38748.71113459",
+        "initInvestAsset": "USDT",
+        "futuresType": "UM",
+        "aumAmount": "41331.11026915",
+        "copierPnl": "-2160.51185674",
+        "copierPnlAsset": "USDT",
+        "profitSharingRate": "10.00",
+        "unrealizedProfitShareAmount": "0",
+        "startTime": 1707538942781,
+        "endTime": null,
+        "closedTime": null,
+        "tag": [
+            "HIGH_LEVERAGE",
+            "API_KEY_TRADE"
+        ],
+        "positionShow": true,
+        "mockCopyCount": 38,
+        "sharpRatio": null,
+        "hasMock": false,
+        "lockPeriod": null,
+        "copierLockPeriodTime": null,
+        "badgeName": null,
+        "badgeModifyTime": null,
+        "badgeCopierCount": null,
+        "tagItemVos": [
+            {
+                "tagName": "HIGH_LEVERAGE",
+                "tagLangKey": "tag_lang_HIGH_LEVERAGE",
+                "descLangKey": "desc_lang_HIGH_LEVERAGE",
+                "describeParams": {},
+                "enDescribe": null,
+                "cnDescribe": null,
+                "sort": 1
+            },
+            {
+                "tagName": "API_KEY_TRADE",
+                "tagLangKey": "tag_lang_API_KEY_TRADE",
+                "descLangKey": "desc_lang_API_KEY_TRADE",
+                "describeParams": {},
+                "enDescribe": null,
+                "cnDescribe": null,
+                "sort": 2
+            }
+        ],
+        "feedAgreement": true,
+        "feedShareSwitch": false,
+        "feedSharePushLimit": 25,
+        "fixedRadioMinCopyUsd": 10.00000000,
+        "fixedAmountMinCopyUsd": 10.00000000,
+        "favorite": false
+    },
+    "success": true
+}
