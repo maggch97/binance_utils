@@ -46,22 +46,26 @@ def check_super_trader(id):
         mdd = performance['data']['mdd']
         roi = performance['data']['roi']
         totalOrder = performance['data']['totalOrder']
+        winRate = performance['data']['winRate']
         # cal running day
         runningDay = (int(time.time()) - startTime / 1000) / 86400
 
         if (runningDay > 12):
             # an old trader is not a super trader
             return False
+        # print(winRate, mdd, roi, roi, id)
         # TODO check trade history, if all action are same direction, then it is not a super trader
-
+        if (winRate > 96 or winRate < 50):
+            return False
         if (mdd > 15):
             return False
-        if (roi < 20):
+        if (roi < 4):
             return False
-        if (totalOrder < 10):
+        if (totalOrder < 30):
             return False
         return True
     except Exception as e:
+        print(e, "id:", id)
         return False
 
 def check_super_trader_list(pageNumber):

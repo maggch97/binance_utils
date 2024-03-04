@@ -15,8 +15,8 @@ def fetch_trade_history_page(pageNumber, portfolioId, pageSize=10):
     response = requests.post(url, headers=headers, data=json.dumps(data))
     return response.json()
 
-def write_trade_history_to_file(history):
-    with open('trade_history.json', 'w') as f:
+def write_trade_history_to_file(history, portfolioId):
+    with open(f'trade_history_{portfolioId}.json', 'w') as f:
         json.dump(history, f)
 
 def fetch_trade_history(portfolioId):
@@ -28,10 +28,10 @@ def fetch_trade_history(portfolioId):
         if (data['data']['list'] == []):
             break
         history += data['data']['list']
-        write_trade_history_to_file(history)
+        write_trade_history_to_file(history, portfolioId)
         print(data, pageNumber)
         pageNumber += 1
         time.sleep(1)
 
 
-fetch_trade_history("3865423691884344576")
+ #fetch_trade_history("3878011906256744961")

@@ -1,8 +1,11 @@
 import json
 import time
 
+portfolioId = "3865423691884344576"
+coinCode = "WLDUSDT"
+
 def read_trade_history_from_file():
-    with open('trade_history_jzds.json', 'r') as f:
+    with open(f'trade_history_{portfolioId}.json', 'r') as f:
         return json.load(f)
     
 def filter_trade_history_by_coin(history, coin):
@@ -33,8 +36,9 @@ def get_all_coins(history):
 
 history = read_trade_history_from_file()
 print(get_all_coins(history))
-filtered = filter_trade_history_by_coin(history, 'INJUSDT')
+filtered = filter_trade_history_by_coin(history, coinCode)
 
+print(f"\033[35m{'时间':<19}\t{'操作':<4}\t{'数量':<4}\t{'价格':<4}\t{'盈亏':<4}\t{'总价':<4}\033[0m")
 for item in filtered:
     # cal the  开多/开空/平多/平空  from side and positionSide
 
@@ -65,7 +69,7 @@ for item in filtered:
 
     # keep 2 decimal
     totalPrice = round(item['price'] * item['qty'], 2)
-    item['price'] = round(item['price'], 2)
+    item['price'] = round(item['price'], 3)
     item['realizedProfit'] = round(item['realizedProfit'], 2)
     item['qty'] = round(item['qty'], 2)
 
