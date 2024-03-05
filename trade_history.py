@@ -1,6 +1,7 @@
 import requests
 import time
 import json
+import sys
 
 def fetch_trade_history_page(pageNumber, portfolioId, pageSize=10):
     url = "https://www.binance.com/bapi/futures/v1/public/future/copy-trade/lead-portfolio/trade-history"
@@ -16,10 +17,23 @@ def fetch_trade_history_page(pageNumber, portfolioId, pageSize=10):
     return response.json()
 
 def write_trade_history_to_file(history, portfolioId):
-    with open(f'trade_history_{portfolioId}.json', 'w') as f:
+    with open(f'data_trade_history/trade_history_{portfolioId}.json', 'w') as f:
         json.dump(history, f)
 
+def read_trade_history_from_file(portfolioId):
+    try:
+        with open(f'data_trade_history/trade_history_{portfolioId}.json', 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+    
+def toJsonStr(obj):
+    return json.dumps(obj, sort_keys=True)
 def fetch_trade_history(portfolioId):
+    storedHistory = read_trade_history_from_file(portfolioId)
+    storedHistoryStrSet = set(map(lambda x: toJsonStr(x), storedHistory))
+    print(storedHistoryStrSet)
+    fetchedHistory = []
     pageNumber = 1
     pageSize = 10
     history = []
@@ -27,11 +41,23 @@ def fetch_trade_history(portfolioId):
         data = fetch_trade_history_page(pageNumber, portfolioId, pageSize)
         if (data['data']['list'] == []):
             break
-        history += data['data']['list']
-        write_trade_history_to_file(history, portfolioId)
-        print(data, pageNumber)
+        fetchedHistory += data['data']['list']
+        crossed = False
+        while len(fetchedHistory) > 0 and toJsonStr(fetchedHistory[-1]) in storedHistoryStrSet:
+            fetchedHistory.pop()
+            crossed = True
+        if crossed:
+            print("crossed")
+            break
+        print(pageNumber)
         pageNumber += 1
-        time.sleep(1)
+        
+    history = fetchedHistory + storedHistory
+    write_trade_history_to_file(history, portfolioId)
 
-
- #fetch_trade_history("3878011906256744961")
+# read id from args
+# portfolioId = sys.argv[1]
+# if portfolioId == '':
+#     print("portfolioId is empty")
+#     sys.exit(1)
+# fetch_trade_history(portfolioId)

@@ -1,11 +1,11 @@
 import json
 import time
 
-portfolioId = "3865423691884344576"
-coinCode = "WLDUSDT"
+portfolioId = "3826311744891241216"
+coinCode = "1000SHIBUSDT"
 
 def read_trade_history_from_file():
-    with open(f'trade_history_{portfolioId}.json', 'r') as f:
+    with open(f'data_trade_history/trade_history_{portfolioId}.json', 'r') as f:
         return json.load(f)
     
 def filter_trade_history_by_coin(history, coin):

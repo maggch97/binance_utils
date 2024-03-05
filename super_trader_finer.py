@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import trade_history
 
 def fetch_detail(id):
     url = f"https://www.binance.com/bapi/futures/v1/friendly/future/copy-trade/lead-portfolio/detail?portfolioId={id}"
@@ -75,6 +76,9 @@ def check_super_trader_list(pageNumber):
         for trader in data['data']['list']:
             roi = trader['roi']
             # print("trader:", trader['nickname'], "roi:", roi, "leadPortfolioId:", trader['leadPortfolioId'])
+            # python .\trade_history.py leadPortfolioId
+            print("trader:", trader['nickname'], "leadPortfolioId:", trader['leadPortfolioId'])
+            trade_history.fetch_trade_history(trader['leadPortfolioId'])
             if (check_super_trader(trader['leadPortfolioId'])):
                 result.append(trader)
                 print("Super trader:", trader['nickname'], "leadPortfolioId:", trader['leadPortfolioId'])
@@ -85,5 +89,6 @@ def check_super_trader_list(pageNumber):
 
 
 # 100 to 1
-for i in range(1,20):
-    check_super_trader_list(i)
+while True:
+    for i in range(1,30):
+        check_super_trader_list(i)
